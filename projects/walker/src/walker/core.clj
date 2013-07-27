@@ -16,10 +16,10 @@
   (let [choice (int (random 4))]
     (println choice)
     (case choice
-      0 (def x (+ x 1))
-      1 (def x (- x 1))
-      2 (def y (+ y 1))
-      3 (def y (- y 1)))))
+      0 (def x (constrain (+ x 1) 0 (width)))
+      1 (def x (constrain (- x 1) 0 (width)))
+      2 (def y (constrain (+ y 1) 0 (height)))
+      3 (def y (constrain (- y 1) 0 (height))))))
 
 
 ; Processing's draw 
