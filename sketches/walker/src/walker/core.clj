@@ -18,14 +18,10 @@
   (wlkr/show _walker))
 
 
-; Setup sketch
-(defsketch walker
-  :title "Walker"
-  :setup setup
-  :draw draw
-  :size [600 400])
-
-
 ; Just to be able to do `lein run`
 (defn -main []
-  (defsketch))
+  (defsketch walker
+    :title "Walker"
+    :setup setup
+    :draw draw
+    :size [600 400]))
