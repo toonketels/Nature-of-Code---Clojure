@@ -29,11 +29,17 @@
 ; Choose an option (4 possibilities)
 ; Modify this function to modify walker behavior
 (defn- choose [walker]
-  (int (random 4)))
+  (def randomNumber (random 1))
+  (cond
+    (< randomNumber 0.25) 0
+    (< randomNumber 0.50) 1
+    (< randomNumber 0.78) 2      ; Skew probability to option 2
+    :else 3))
 
 
 ; Public api
 ;-----------
+
 
 ; Creates a new walker data object which is a map
 (defn createWalker []
