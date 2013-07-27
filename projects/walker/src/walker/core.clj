@@ -1,5 +1,6 @@
 (ns walker.core
-  (:use quil.core))
+  (:use quil.core)
+  (:require [walker.walker :as wlkr]))
 
 
 ; Processing's setup
@@ -7,25 +8,15 @@
   (smooth)
   (stroke 0)
   (background 255)
-  (def x (/ (width) 2))
-  (def y (/ (height) 2)))
-
-
-; Helper to update the coordinates
-(defn updateCoordinates []
-  (let [choice (int (random 4))]
-    (println choice)
-    (case choice
-      0 (def x (constrain (+ x 1) 0 (width)))
-      1 (def x (constrain (- x 1) 0 (width)))
-      2 (def y (constrain (+ y 1) 0 (height)))
-      3 (def y (constrain (- y 1) 0 (height))))))
+  (def coord {:x (/ (width) 2)
+              :y (/ (height) 2)}))
 
 
 ; Processing's draw 
 (defn draw []
-  (updateCoordinates)
-  (point x y))
+  (def coord (wlkr/updateCoordinates coord))
+  (println coord)
+  (point (get coord :x) (get coord :y)))
 
 
 ; Setup sketch
