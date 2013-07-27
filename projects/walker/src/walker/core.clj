@@ -8,15 +8,14 @@
   (smooth)
   (stroke 0)
   (background 255)
-  (def coord {:x (/ (width) 2)
-              :y (/ (height) 2)}))
+  (def _walker (wlkr/createWalker)))
 
 
 ; Processing's draw 
 (defn draw []
-  (def coord (wlkr/updateCoordinates coord))
-  (println coord)
-  (point (get coord :x) (get coord :y)))
+  (def _walker (wlkr/walk _walker))
+  (println _walker)
+  (wlkr/show _walker))
 
 
 ; Setup sketch
